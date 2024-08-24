@@ -2,13 +2,23 @@
 
 ## Project Overview
 
-This project demonstrates a real-time data streaming and visualization pipeline using Apache Kafka and Python. The system monitors the CPU usage on a local machine and streams the data to a Kafka topic. The data is then consumed and visualized in real-time using Matplotlib in Jupyter Notebooks. This setup is useful for monitoring system performance or learning how to handle real-time data streaming and visualization.
+This project demonstrates a real-time system performance monitoring solution using Apache Kafka and Python. By capturing and streaming live CPU usage data from a local machine to a Kafka topic, the system enables real-time visualization and analysis using Matplotlib within a Jupyter Notebook environment. This project serves as a practical example for understanding real-time data streaming, visualization, and system performance monitoring techniques.
 
 ## Files in the Project
 
 ### 1. **Producer.py**
 
-- **Function:** This script continuously monitors the CPU usage of the system and sends this data to a Kafka topic named `'test-topic'`. The data is sent as a byte-encoded integer representing the CPU usage percentage. The script generates and sends data every 0.5 seconds.
+**Function:** 
+
+This script actively monitors the system's CPU usage and publishes this data in real-time to a Kafka topic named 'test-topic'. The CPU usage percentage is encoded as a byte-encoded integer before being sent. Data generation and transmission occur at a frequency of 0.5 seconds (twice per second).
+
+**Key Features:**
+
+ * Real-time CPU Monitoring: The script continuously tracks the CPU usage of the system, providing up-to-date information.
+ * Kafka Integration: It utilizes Apache Kafka to publish the CPU usage data, enabling real-time streaming and consumption by other applications.
+ * Data Encoding: The CPU usage percentage is efficiently encoded as a byte-encoded integer before transmission, optimizing data size.
+ * High-Frequency Updates: The script generates and sends data every 0.5 seconds, ensuring a near-continuous stream of CPU usage information.
+
 - **Usage:**
     - To run this script, simply execute it using Python:
     
@@ -20,14 +30,33 @@ This project demonstrates a real-time data streaming and visualization pipeline 
 
 ### 2. **Kafka_RealTime_Plot.ipynb**
 
-- **Function:** This Jupyter Notebook consumes CPU usage data from the Kafka topic `'test-topic'`, processes it, and appends it to a list. The data is then visualized in real-time using Matplotlib. The plot updates every second to show the latest data, displaying up to 200 data points at a time.
+**Function:** 
+
+This Jupyter Notebook acts as a real-time data consumer and visualizer. It subscribes to the Kafka topic 'test-topic' to receive incoming CPU usage data. The received data is processed and added to a list for plotting. Matplotlib is utilized to create a dynamic line chart that updates every second, displaying the most recent 200 data points. This provides a live visualization of the system's CPU usage trends.
+
+**Key Features:**
+
+* Real-time data consumption from Kafka
+* Data processing and storage for plotting
+* Dynamic Matplotlib chart with continuous updates
+  
 - **Usage:**
     - Open the notebook in Jupyter and execute the cells sequentially.
     - Ensure Kafka is running and data is being produced to the `'test-topic'` topic.
 
 ### 3. **Project.ipynb**
 
-- **Function:** Similar to `Kafka_RealTime_Plot.ipynb`, this notebook also consumes and visualizes CPU usage data in real-time. It shows a continuously updating graph of CPU usage percentages.
+**Function:** 
+
+This Jupyter Notebook provides an alternative real-time visualization of CPU usage data streamed from Kafka. Like 'Kafka_RealTime_Plot.ipynb', it consumes data from the 'test-topic' and displays it in a continuously updating graph.  However, it may employ different visualization techniques or configurations (e.g., different chart types, data aggregation, or display settings) to offer a unique perspective on the system's CPU performance.
+
+**Possible Distinctions (compared to Kafka_RealTime_Plot.ipynb):**
+
+* May use a different chart type (e.g., bar chart, area chart)
+* May aggregate data over time intervals for a smoother visualization
+* May offer customizable display settings (e.g., color schemes, axis labels)
+* May include additional features or analysis beyond basic plotting
+  
 - **Usage:**
     - Open the notebook in Jupyter and execute the cells sequentially.
     - Ensure Kafka is running and data is being produced to the `'test-topic'` topic.
